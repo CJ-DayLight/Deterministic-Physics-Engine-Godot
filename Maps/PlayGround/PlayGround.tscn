@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Physic/PhysicCube/Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/PlayGround/Label.gd" type="Script" id=2]
+[ext_resource path="res://Maps/PlayGround/Environment.tres" type="Environment" id=3]
+[ext_resource path="res://Maps/PlayGround/PlayGround.gd" type="Script" id=4]
+[ext_resource path="res://Players/Player/Player.tscn" type="PackedScene" id=5]
+
+[node name="L_Main" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="Lighting" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = ExtResource( 3 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Lighting"]
+transform = Transform( -0.866026, -0.433012, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 110, -219 )
+light_color = Color( 0.972549, 0.933333, 0.87451, 1 )
+light_energy = 2.0
+shadow_bias = 0.05
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.01
+directional_shadow_split_2 = 0.001
+directional_shadow_split_3 = 0.07
+directional_shadow_normal_bias = 2.0
+directional_shadow_bias_split_scale = 0.0
+directional_shadow_max_distance = 879.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 17.0
+margin_top = 18.0
+margin_right = 191.0
+margin_bottom = 79.0
+script = ExtResource( 2 )
+
+[node name="Walls" type="Spatial" parent="."]
+
+[node name="Wall1" parent="Walls" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 200000, 0, 200000 )
+Height = 300
+Depth = 120000
+Width = 80000
+
+[node name="Wall2" parent="Walls" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 306000, 0, 365000 )
+Height = 300
+Depth = 120000
+Width = 80000
+
+[node name="Wall4" parent="Walls" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 245000, 0, 320000 )
+Height = 30000
+Depth = 50000
+Width = 30000
+
+[node name="Wall5" parent="Walls" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 270000, -84000, 318000 )
+Height = 30000
+Depth = 50000
+Width = 30000
+
+[node name="ServerPlayer" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 273280, 5000, 302300 )
+
+[node name="ServerPlayer2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 248880, 5000, 213700 )
